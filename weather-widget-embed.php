@@ -19,7 +19,6 @@ class Weather_Widget_Generator {
         
         // Enqueue scripts
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         
         // Ajax handlers
         add_action('wp_ajax_get_weather', array($this, 'get_weather_data'));
@@ -48,10 +47,6 @@ class Weather_Widget_Generator {
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('weather_widget_nonce')
         ));
-    }
-    
-    public function admin_enqueue_scripts($hook) {
-        wp_enqueue_style('weather-widget-admin-css', plugins_url('assets/admin-style.css', __FILE__), array(), '1.0.0');
     }
     
     public function add_admin_menu() {
